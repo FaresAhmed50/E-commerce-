@@ -1,40 +1,17 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {FlowbiteService} from './Shared/Services/flowbite.service';
+import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import {NavbarComponent} from './Shared/Layout/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
   imports: [
-    RouterLink
+    RouterLink,
+    NavbarComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent  implements OnInit {
+export class AppComponent  {
   title = 'E-commerce';
-
-  _flowbiteService = inject(FlowbiteService);
-  _breakpointObserver = inject(BreakpointObserver);
-   screenSize!: boolean;
-
-  constructor() {
-  }
-
-  ngOnInit() {
-    this._flowbiteService.loadFlowbite( flowbite => {});
-    this._breakpointObserver.observe([
-      "(max-width: 768px)"
-    ]).subscribe((result: BreakpointState) => {
-      if (result.matches) {
-        console.log(result.matches);
-        this.screenSize = result.matches;
-      } else {
-        console.log(false)
-        this.screenSize = result.matches;
-      }
-    });
-  }
-
 
 }
