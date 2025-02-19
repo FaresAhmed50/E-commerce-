@@ -3,6 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pacifico&display=swap');
+
 
 :root{
   --primary: rgba(20, 23, 24, 1);
@@ -11,7 +13,12 @@
 }
 
 .btn {
-  @apply py-2 px-5 font-semibold rounded-full ;
+  @apply py-2 px-5 font-semibold rounded-md bg-black text-center text-white mt-5 mb-5 w-full  ;
 }
+
+.custom_count{
+  @apply bg-black  rounded-full text-white text-2xl text-center w-8 h-8;
+}
+
 
 

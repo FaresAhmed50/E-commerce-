@@ -1,10 +1,13 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {FlowbiteService} from '../../Services/flowbite.service';
 import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
+import {ButtomComponent} from '../../UI/buttom/buttom.component';
 
 @Component({
   selector: 'app-navbar',
-  imports: [],
+  imports: [
+    ButtomComponent
+  ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
@@ -14,6 +17,9 @@ export class NavbarComponent implements OnInit {
   _flowbiteService = inject(FlowbiteService);
   _breakpointObserver = inject(BreakpointObserver);
   screenSize!: boolean;
+  cart_count : number = 0;
+  wishlist_count : number = 0;
+
 
   constructor() {
   }
