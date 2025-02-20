@@ -2,11 +2,15 @@ import {Component, inject, OnInit} from '@angular/core';
 import {FlowbiteService} from '../../Services/flowbite.service';
 import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 import {ButtomComponent} from '../../UI/buttom/buttom.component';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   imports: [
-    ButtomComponent
+    ButtomComponent,
+    RouterLink,
+    RouterLinkActive,
+
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
