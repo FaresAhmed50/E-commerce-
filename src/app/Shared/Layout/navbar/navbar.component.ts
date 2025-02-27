@@ -25,8 +25,6 @@ export class NavbarComponent implements OnInit {
   wishlist_count : number = 0;
 
 
-  constructor() {
-  }
 
   ngOnInit() {
     this._flowbiteService.loadFlowbite( flowbite => {});
