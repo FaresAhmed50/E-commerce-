@@ -1,35 +1,53 @@
 
-<div class="w-[80%] mx-auto">
+<div class="w-[80%] mx-auto py-5">
 
-  <div>
-    <h1>
+  <div class="pb-10">
+    <h1 class="text-[28px] font-[Inter] font-semibold w-[80%] pb-3 md:text-[40px] md:w-[50%] ">
       We believe in sustainable decor. We’re passionate about life at home.
     </h1>
 
-    <p>
+    <p class="w-[90%] text-[16px] font-[Inter] font-light md:w-[70%]">
       Our features timeless furniture, with natural fabrics, curved lines, plenty of mirrors and classic design, which can be incorporated into any decor project. The pieces enchant for their sobriety, to last for generations, faithful to the shapes of each period, with a touch of the present
     </p>
   </div>
 
-  <div>
+  <div class="flex justify-between flex-col bg-[#F3F5F7] lg:flex-row ">
 
     <picture>
-      <img src='Paste%20image.png'>
+      <img src='Paste%20image.png' class="w-[100%]">
     </picture>
 
-    <div>
-      <div>
-        <app-card [cards]="card"></app-card>
+    <div class="align px-4 py-5 ">
+
+      <h2 class="justify-self-start text-[40px] font-[Inter] font-semibold py-2  ">
+        About Us
+      </h2>
+
+      <div class="w-[70%] justify-self-start text-base/7 py-3">
+        <p class="text-[16px] font-[Inter] font-normal pb-2 " >
+          3legant is a gift & decorations store based in HCMC, Vietnam. Est since 2019.
+        </p>
+
+        <p class="text-[16px] font-[Inter] font-normal  py-6 md:py-0">
+          Our customer service is always prepared to support you 24/7
+        </p>
       </div>
 
+      <button class="justify-self-start block">
+        <a>
+          Shop Now <i class="fa fa-arrow-right"></i>
+        </a>
+      </button>
+
     </div>
-
-
-
   </div>
 
-
-
-
-
+  <div class="py-9">
+    <h2 class="text-[40px] font-[Inter] font-semibold  text-center">
+      Contact Us
+    </h2>
+    <div>
+      <app-card [cards]="card"></app-card>
+    </div>
+  </div>
 </div>

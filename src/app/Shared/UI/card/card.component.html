@@ -2,13 +2,13 @@
 
 <div class="flex flex-wrap flex-col justify-center items-center text-center gap-5 my-10  md:flex-row lg:flex-row">
   @for (card of cards; track card.icon) {
-    <div class="Card bg-[#F3F5F7] px-5" [ngStyle]="{ 'width': cardWidth }">
+    <div class="Card bg-[#F3F5F7] p-8 " [ngStyle]="{ 'width': cardWidth }">
       <div class="w-[80%] mx-auto">
-        <div class="Card__icon flex justify-center py-2">
-          <img [src]="card.icon" alt="Card Icon " />
+        <div class="Card__icon flex justify-center py-2 ">
+          <img [src]="card.icon" alt="Card Icon" class="pb-2" />
         </div>
         <div>
-          <h2 class="text-[16px] font-[Inter] font-bold text-[--secondary-p]">
+          <h2 class="text-[16px] font-[Inter] font-bold text-[--secondary-p] pb-2">
             {{ card.title }}
           </h2>
           <p class="text-[16px] font-[Inter] font-bold text-[black]">

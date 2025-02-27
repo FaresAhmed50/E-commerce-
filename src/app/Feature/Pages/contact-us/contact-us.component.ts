@@ -13,27 +13,24 @@ import {CardComponent} from '../../../Shared/UI/card/card.component';
 })
 export class ContactUsComponent {
 
+
+
    card : Card[] = [
     {
-      icon : "mail.png",
-      title : "Hello",
-      paragraph : "Test"
+      icon : "store.png",
+      title : "ADDRESS",
+      paragraph : "234 Hai Trieu, Ho Chi Minh City, \n" +
+        "Viet Nam"
+    },
+    {
+      icon : "call.svg",
+      title : "Contact Us",
+      paragraph : "+84 234 567 890"
     },
     {
       icon : "mail.png",
-      title : "Helloooo",
-      paragraph : "Test"
+      title : "Email",
+      paragraph : "hello@3legant.com"
     },
-    {
-      icon : "mail.png",
-      title : "Hellopppooo",
-      paragraph : "Test"
-    },
-     {
-       icon : "mail.png",
-       title : "Helloppppppp",
-       paragraph : "Test"
-     }
   ];
-
 }
