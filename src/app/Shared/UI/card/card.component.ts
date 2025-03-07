@@ -60,5 +60,4 @@ export class CardComponent implements OnChanges, OnInit {
     // Calculate the width dynamically based on the number of cards per row
     this.cardWidth = `${92 / this.cardsPerRow}%`;
   }
-
 }

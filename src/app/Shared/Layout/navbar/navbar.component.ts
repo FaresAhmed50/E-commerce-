@@ -1,5 +1,5 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {FlowbiteService} from '../../Services/flowbite.service';
+import {FlowbiteService} from '../../Services/Flowbit/flowbite.service';
 import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 import {ButtomComponent} from '../../UI/buttom/buttom.component';
 import {RouterLink, RouterLinkActive} from '@angular/router';
@@ -10,9 +10,9 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
     ButtomComponent,
     RouterLink,
     RouterLinkActive,
-
   ],
   templateUrl: './navbar.component.html',
+  standalone: true,
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit {

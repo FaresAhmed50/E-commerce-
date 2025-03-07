@@ -19,9 +19,10 @@ export class ContactUsComponent {
     {
       icon : "store.png",
       title : "ADDRESS",
-      paragraph : "234 Hai Trieu, Ho Chi Minh City, \n" +
-        "Viet Nam"
+      paragraph : "234 Hai Trieu, Ho Chi Minh City"
+
     },
+
     {
       icon : "call.svg",
       title : "Contact Us",
