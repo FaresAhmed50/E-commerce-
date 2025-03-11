@@ -6,6 +6,7 @@ export const routes: Routes = [
   { path: 'auth', component: AuthLayoutComponent , children: [
       {path: '' , loadComponent: () => import('./Core/Pages/register/register.component').then(c => c.RegisterComponent)},
       {path:'login', loadComponent: () => import('./Core/Pages/login/login.component').then(c => c.LoginComponent)},
+      {path:'register', loadComponent:() => import('./Core/Pages/register/register.component').then(c => c.RegisterComponent)},
     ]
   },
   {path:'' , loadComponent: () => import('./Core/Pages/login/login.component').then(c => c.LoginComponent)},
