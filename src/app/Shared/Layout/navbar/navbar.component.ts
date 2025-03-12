@@ -3,6 +3,7 @@ import {FlowbiteService} from '../../Services/Flowbit/flowbite.service';
 import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 import {ButtomComponent} from '../../UI/buttom/buttom.component';
 import {RouterLink, RouterLinkActive} from '@angular/router';
+import {URLService} from '../../../Core/Services/NavServices/urlservice.service';
 
 @Component({
   selector: 'app-navbar',
@@ -18,11 +19,13 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
 export class NavbarComponent implements OnInit {
 
 
-  _flowbiteService = inject(FlowbiteService);
-  _breakpointObserver = inject(BreakpointObserver);
+  _flowbiteService : FlowbiteService = inject(FlowbiteService);
+  _breakpointObserver :BreakpointObserver = inject(BreakpointObserver);
+  _uRLService:URLService = inject(URLService)
   screenSize!: boolean;
   cart_count : number = 0;
   wishlist_count : number = 0;
+
 
 
 
@@ -39,5 +42,7 @@ export class NavbarComponent implements OnInit {
         this.screenSize = result.matches;
       }
     });
+    this._uRLService.isAuthRoute()
+    console.log( "servicesss" , this._uRLService.isAuthRoute())
   }
 }

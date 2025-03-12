@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {RouterLink} from '@angular/router';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   imports: [
-    RouterLink
+    RouterLink,
+    ReactiveFormsModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -12,19 +14,32 @@ import {RouterLink} from '@angular/router';
 })
 export class LoginComponent {
 
-  passwordeye: boolean = false;
-  rePassword: boolean = false;
+  passwordEye: boolean = false;
+  rePasswordEye: boolean = false;
+  @ViewChild("password") password!: ElementRef;
+  @ViewChild('RePassword') RePassword!: ElementRef;
+
+
+  LoginFrom : FormGroup = new FormGroup({
+    name : new FormControl(),
+    email : new FormControl(),
+    password: new FormControl(),
+    rePassword: new FormControl(),
+    phone : new FormControl(),
+  })
 
 
 
+  //Used to togel the type property between passwword and text
   seePasword(){
-    this.passwordeye = !this.passwordeye;
-    console.log(this.passwordeye);
+    this.passwordEye = !this.passwordEye;
+    this.passwordEye ? this.password.nativeElement.type = 'text' :  this.password.nativeElement.type = 'password';
   }
 
+  //Used to togel the type property between passwword and text
   seeRePasword(){
-    this.rePassword = !this.rePassword;
-    console.log(this.passwordeye);
+    this.rePasswordEye = !this.rePasswordEye;
+    this.rePasswordEye ? this.RePassword.nativeElement.type = 'text' : this.RePassword.nativeElement.type = 'password';
   }
 
 }

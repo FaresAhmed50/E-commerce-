@@ -1,116 +1,117 @@
+@if (_uRLService.isAuthRoute()){
+  <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-black rounded-lg sm:hidde ">
+    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+    </svg>
+    <span class="ms-2 font-light text-[24px] font-[Pacifico] text-black ">Elegant</span>
+  </button>
 
-<button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-black rounded-lg sm:hidde ">
-  <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-    <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
-  </svg>
-  <span class="ms-2 font-light text-[24px] font-[Pacifico] text-black ">Elegant</span>
-</button>
+  <aside id="default-sidebar" class=" w-[80%] fixed z-40 transition-transform -translate-x-full md:translate-x-0 md:w-[100%] lg:w-[100%] " aria-label="Sidebar">
 
-<aside id="default-sidebar" class=" w-[80%] fixed z-40 transition-transform -translate-x-full md:translate-x-0 md:w-[100%] lg:w-[100%] " aria-label="Sidebar">
+    <div class="h-[100vh] items-baseline flex flex-col  px-3 py-4 overflow-hidden bg-white lg:w-[100%] sm:h-[100vh] md:h-[100%] md:flex md:flex-row flex-1 flex-wrap justify-between" aria-labelledby="drawer-navigation-label">
 
-  <div class="h-[100vh] items-baseline flex flex-col  px-3 py-4 overflow-hidden bg-white lg:w-[100%] sm:h-[100vh] md:h-[100%] md:flex md:flex-row flex-1 flex-wrap justify-between" aria-labelledby="drawer-navigation-label">
-
-    @if (!this.screenSize){
-      <span class="ms-2 font-light text-[24px] font-[Pacifico] text-black">Elegant.</span>
-    }
-
-    <ul class=" flex flex-col items-baseline  font-medium overflow-hidden w-full md:w-auto md:flex md:flex-row justify-between md:items-center ">
-
-      @if (this.screenSize){
-        <span class="ms-2 font-bolder text-[24px] font-[Pacifico] text-black pb-8 ">Elegant.</span>
+      @if (!this.screenSize){
+        <span class="ms-2 font-light text-[24px] font-[Pacifico] text-black">Elegant.</span>
       }
 
-      <li class="me-5 pb-4 md:pb-0 text-[16px] font-[Inter] font-semibold text-[--secondary-p] border-b-2 w-[93%] mb-5 md:border-b-0 md:w-auto md:mb-0 ">
-        <a routerLink="/home"  routerLinkActive="router_active">Home</a>
-      </li>
+      <ul class=" flex flex-col items-baseline  font-medium overflow-hidden w-full md:w-auto md:flex md:flex-row justify-between md:items-center ">
 
-      <li class="me-5 pb-4 md:pb-0 text-[16px] font-[Inter] font-semibold text-[--secondary-p] border-b-2 w-[93%] mb-5 md:border-b-0 md:w-auto md:mb-0">
-        <a routerLink="/shop" routerLinkActive="router_active" >Shop</a>
-      </li>
+        @if (this.screenSize){
+          <span class="ms-2 font-bolder text-[24px] font-[Pacifico] text-black pb-8 ">Elegant.</span>
+        }
 
-      <li class="me-5 pb-4 md:pb-0 text-[16px] font-[Inter] font-semibold text-[--secondary-p] border-b-2 w-[93%] mb-5 md:border-b-0 md:w-auto md:mb-0">
-        <a routerLink="/products" routerLinkActive="router_active" >Product</a>
-      </li>
+        <li class="me-5 pb-4 md:pb-0 text-[16px] font-[Inter] font-semibold text-[--secondary-p] border-b-2 w-[93%] mb-5 md:border-b-0 md:w-auto md:mb-0 ">
+          <a routerLink="/home"  routerLinkActive="router_active">Home</a>
+        </li>
 
-      <li class="pb-4 md:pb-0 text-[16px] font-[Inter] font-semibold text-[--secondary-p] border-b-2 w-[93%] mb-5 md:border-b-0 md:w-auto md:mb-0">
-        <a routerLink="/contact-us" routerLinkActive="router_active" >Contact Us</a>
-      </li>
-    </ul>
+        <li class="me-5 pb-4 md:pb-0 text-[16px] font-[Inter] font-semibold text-[--secondary-p] border-b-2 w-[93%] mb-5 md:border-b-0 md:w-auto md:mb-0">
+          <a routerLink="/shop" routerLinkActive="router_active" >Shop</a>
+        </li>
+
+        <li class="me-5 pb-4 md:pb-0 text-[16px] font-[Inter] font-semibold text-[--secondary-p] border-b-2 w-[93%] mb-5 md:border-b-0 md:w-auto md:mb-0">
+          <a routerLink="/products" routerLinkActive="router_active" >Product</a>
+        </li>
+
+        <li class="pb-4 md:pb-0 text-[16px] font-[Inter] font-semibold text-[--secondary-p] border-b-2 w-[93%] mb-5 md:border-b-0 md:w-auto md:mb-0">
+          <a routerLink="/contact-us" routerLinkActive="router_active" >Contact Us</a>
+        </li>
+      </ul>
 
 
-    @if (screenSize){
+      @if (screenSize){
 
-      <ul class=" flex flex-col justify-between w-[100%] ">
+        <ul class=" flex flex-col justify-between w-[100%] ">
 
-        <li class="me-5 border-b-[2px]">
-          <a  class="flex p-2 " routerLink="/cart">
-            <span class="flex-1 ms-3 font-[Inter] text-[18px] font-bold text-[--secondary-p] mb-3 ">Cart</span>
-            <span class="px-2 ms-3 text-sm font-medium flex justify-center items-center">
+          <li class="me-5 border-b-[2px]">
+            <a  class="flex p-2 " routerLink="/cart">
+              <span class="flex-1 ms-3 font-[Inter] text-[18px] font-bold text-[--secondary-p] mb-3 ">Cart</span>
+              <span class="px-2 ms-3 text-sm font-medium flex justify-center items-center">
               <img src="shopping%20bag.svg" class="pr-2" alt="shopping icon">
               <p class="custom_count">{{cart_count}}</p>
             </span>
-          </a>
-        </li>
+            </a>
+          </li>
 
-        <li class="me-5 border-b-[2px]">
-          <a  class="flex p-2 " routerLink="wishlist">
-            <span class="flex-1 ms-3 font-[Inter] text-[18px] font-bold text-[--secondary-p] mb-3 ">Wishlist</span>
-            <span class="px-2 ms-3 text-sm font-medium flex justify-center items-center">
+          <li class="me-5 border-b-[2px]">
+            <a  class="flex p-2 " routerLink="wishlist">
+              <span class="flex-1 ms-3 font-[Inter] text-[18px] font-bold text-[--secondary-p] mb-3 ">Wishlist</span>
+              <span class="px-2 ms-3 text-sm font-medium flex justify-center items-center">
               <img src="Shape.svg" class="pr-2" alt="cart icon">
               <p class="custom_count">{{wishlist_count}}</p>
             </span>
-          </a>
-        </li>
+            </a>
+          </li>
 
-        <app-buttom>
-          Sign In
-        </app-buttom>
+          <app-buttom>
+            Sign In
+          </app-buttom>
 
-        <ul class=" flex  items-center ">
+          <ul class=" flex  items-center ">
+
+            <li class="me-5">
+              <a>
+                <img src="instagram_black.svg" alt="instagram">
+              </a>
+            </li>
+
+            <li class="me-5">
+              <a>
+                <img src="facebook_black.svg" alt="facebook">
+              </a>
+            </li>
+
+            <li class="me-5">
+              <a>
+                <img src="youtube_black.svg">
+              </a>
+            </li>
+          </ul>
+        </ul>
+      } @else {
+        <ul class=" flex justify-between items-center ">
 
           <li class="me-5">
             <a>
-              <img src="instagram_black.svg" alt="instagram">
+              <img src="Vector.svg" alt="portflio">
             </a>
           </li>
 
           <li class="me-5">
-            <a>
-              <img src="facebook_black.svg" alt="facebook">
+            <a routerLink="/wishlist">
+              <img src="Shape.svg" alt="cart icon">
             </a>
           </li>
 
           <li class="me-5">
-            <a>
-              <img src="youtube_black.svg">
+            <a routerLink="/cart">
+              <img src="shopping%20bag.svg" alt="shopping icon">
             </a>
           </li>
         </ul>
-      </ul>
-    } @else {
-      <ul class=" flex justify-between items-center ">
-
-        <li class="me-5">
-          <a>
-            <img src="Vector.svg" alt="portflio">
-          </a>
-        </li>
-
-        <li class="me-5">
-          <a routerLink="/wishlist">
-            <img src="Shape.svg" alt="cart icon">
-          </a>
-        </li>
-
-        <li class="me-5">
-          <a routerLink="/cart">
-            <img src="shopping%20bag.svg" alt="shopping icon">
-          </a>
-        </li>
-      </ul>
-    }
-  </div>
-</aside>
+      }
+    </div>
+  </aside>
+}
 
 
 
