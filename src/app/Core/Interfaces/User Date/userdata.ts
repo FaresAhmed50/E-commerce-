@@ -5,3 +5,9 @@ export interface Userdata {
   repassword: string;
   phone : string;
 }
+
+
+export interface SignInDate {
+  email : string;
+  password: string;
+}

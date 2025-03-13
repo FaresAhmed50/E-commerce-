@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {GuardsCheckStart, NavigationEnd, Router} from '@angular/router';
+import { NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs';
 
 @Injectable({
@@ -25,11 +25,19 @@ export class URLService  {
   }
 
   loginNavigation(path : string , data?:string):Promise<boolean>{
-
     if(data){
       return this._router.navigate([path , data]);
     }else {
       return this._router.navigate([path]);
     }
   }
+
+  registerNavigation(path : string , data?:string):Promise<boolean>{
+    if(data){
+      return this._router.navigate([path , data]);
+    }else{
+      return this._router.navigate([path]);
+    }
+  }
+
 }
