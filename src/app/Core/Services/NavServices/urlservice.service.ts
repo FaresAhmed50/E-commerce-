@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {NavigationEnd ,  Router} from '@angular/router';
+import {GuardsCheckStart, NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs';
 
 @Injectable({
@@ -9,11 +9,10 @@ export class URLService  {
 
   _router = inject(Router);
   private currentURL = ``;
-  y !: any;
+
 
   constructor() {
     this.CurrentURL();
-
   }
 
   CurrentURL()  {
@@ -22,15 +21,6 @@ export class URLService  {
   }
 
   isAuthRoute() : boolean{
-    // console.log(this.x())
     return !(this.currentURL.includes('auth') || this.currentURL == '/');
   }
-
-
-  x(){
-    // this.y = this._router.events.subscribe(event => { this .y = event instanceof NavigationEnd ; });
-    // console.log("yyyyyyyyy   ",this.y)
-  }
-
-
 }

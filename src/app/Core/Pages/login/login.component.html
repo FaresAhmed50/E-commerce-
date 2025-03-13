@@ -5,7 +5,7 @@
 
     <div class="w-full md:w-5/12 relative">
 
-      <img src="Signup.png" class=" aspect-[75/86] md:aspect-[120/135] h-full md:h-[100vh] object-cover md:object-fill relative ">
+      <img  src="Signup.png"  class=" aspect-[75/86] md:aspect-[120/135] h-full md:h-[100vh] object-cover md:object-fill relative " alt="signup image">
 
 
       <p class="absolute top-8 left-[42%] md:left-[40%] lg:left-[45%] xl:left-[40%] font-light text-[24px] font-[Pacifico] text-black">
@@ -14,7 +14,7 @@
 
     </div>
 
-    <div class=" ml-0 md:ml-[16.67%] w-full  md:w-5/12   flex flex-col justify-center items-center md:items-start mt-10 md:mt-0 ">
+    <div class=" ml-0 md:ml-[10%] lg:ml-[16.67%] w-full  md:w-5/12   flex flex-col justify-center items-center md:items-start mt-10 md:mt-0 ">
 
       <h1 class="text-[40px] font-[Inter] text-[--primary] font-bold mb-6">
         Sign up
@@ -34,14 +34,17 @@
       </div>
 
 
-      <div class="w-[70%] mt-8 md:mt-0">
-        <form [formGroup]="LoginFrom"  >
+      <div class="w-[90%] md:w-[90%] lg:w-[70%] mt-8 md:mt-0">
+        <form [formGroup]="LoginFrom"  (ngSubmit)="loginForm()"  >
 
           <div class="relative z-0 w-full mb-5 group ">
+            @let loginName = LoginFrom.get('name');
+            @let touchedEmailName = LoginFrom.get('naame')?.touched;
+
             <input formControlName="name" type="text" name="floating_name" id="floating_name" class="block py-3 px-0 w-full text-[16px] text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-300  focus:outline-none focus:ring-0 focus:border-gray-300 peer" placeholder=" "  />
             <label for="floating_name" class="peer-focus:font-[16px] absolute text-[16px] text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-gray-400 peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5">Your name</label>
 
-            @if (LoginFrom.get('name')?.errors && LoginFrom.get('name')?.touched == true) {
+            @if (loginName?.errors && touchedEmailName) {
               <div class="flex p-4 mb-5 mt-3 text-sm text-white rounded-lg bg-red-400 " role="alert">
                 <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
@@ -50,26 +53,27 @@
                 <div>
                   <span class=" md:text-[16px]">Ensure that these requirements are met:</span>
                   <ul class="mt-1.5 list-disc list-inside">
-                    @if (LoginFrom.get('name')?.getError('required')){
+                    @if (loginName?.getError('required')){
                       <li>This Field is Required</li>
-                    } @else if (LoginFrom.get('name')?.getError('minlength')){
+                    } @else if (loginName?.getError('minlength')){
                       <li>The Min Length is 6 Character</li>
-                    } @else if (LoginFrom.get('name')?.getError('maxlength')){
+                    } @else if (loginName?.getError('maxlength')){
                       <li>the Max Length is 30 Character</li>
                     }
                   </ul>
                 </div>
               </div>
             }
-
-
           </div>
 
           <div class="relative z-0 w-full mb-5 group ">
+            @let loginEmail = LoginFrom.get('email');
+            @let touchedEmail = LoginFrom.get('email')?.touched;
+
             <input formControlName="email" type="email" name="floating_email" id="floating_email" class="block py-3 px-0 w-full text-[16px] text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-300  focus:outline-none focus:ring-0 focus:border-gray-300 peer" placeholder=" "  />
             <label for="floating_email" class="peer-focus:font-[16px] absolute text-[16px] text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-gray-400 peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5">Email address</label>
 
-            @if (LoginFrom.get('email')?.errors && LoginFrom.get('email')?.touched == true){
+            @if (loginEmail?.errors && touchedEmail ){
               <div class="flex p-4 mb-5 mt-3 text-sm text-white rounded-lg bg-red-400 " role="alert">
                 <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
@@ -78,9 +82,9 @@
                 <div>
                   <span class=" md:text-[16px]">Ensure that these requirements are met:</span>
                   <ul class="mt-1.5 list-disc list-inside">
-                    @if (LoginFrom.get('email')?.getError('required')){
+                    @if (loginEmail?.getError('required')){
                       <li>This Field is Required</li>
-                    } @else if (LoginFrom.get('email')?.getError('email')){
+                    } @else if (loginEmail?.getError('email')){
                       <li>Please enter a valid email address</li>
                     }
                   </ul>
@@ -90,24 +94,24 @@
           </div>
 
           <div class="relative z-0 w-full mb-5 group ">
+            @let loginPassword = LoginFrom.get('password');
+            @let touchedPassword = LoginFrom.get('password')?.touched;
+
             <input #password formControlName="password" type="password" name="floating_password" id="floating_password" class="block py-3 px-0 w-full text-[16px] text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-300  focus:outline-none focus:ring-0 focus:border-gray-300 peer" placeholder=" "  />
             <label for="floating_password" class="peer-focus:font-[16px] absolute text-[16px] text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-gray-400 peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5">Password</label>
 
             <div class="absolute top-5 right-0  flex items-center ps-3 ">
-
               <button (click)="seePasword()">
-
                 @if (!passwordEye){
                   <i class="fa-regular fa-eye-slash"></i>
                 } @else {
                   <i class="fa-regular fa-eye"></i>
                 }
               </button>
-
             </div>
 
 
-            @if (LoginFrom.get('password')?.errors && LoginFrom.get('password')?.touched){
+            @if (loginPassword?.errors && touchedPassword){
               <div class="flex p-4 mb-5 mt-3 text-sm text-white rounded-lg bg-red-400 " role="alert">
                 <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
@@ -116,44 +120,37 @@
                 <div>
                   <span class=" md:text-[16px]">Ensure that these requirements are met:</span>
                   <ul class="mt-1.5 list-disc list-inside">
-                    @if (LoginFrom.get('password')?.getError('required')){
+                    @if (loginPassword?.getError('required')){
                       <li>This Field is Required</li>
-                    } @else if (LoginFrom.get('password')?.getError('pattern')){
+                    } @else if (loginPassword?.getError('pattern')){
                       <li>The Password must start with a upper case letter</li>
+
                       <li>The Password be at least 5 character</li>
                     }
                   </ul>
                 </div>
               </div>
             }
-
-
-
           </div>
 
           <div class="relative z-0 w-full mb-5 group ">
+            @let loginRePassword = LoginFrom.get('rePassword');
+            @let touchedRePassword = LoginFrom.get('rePassword')?.touched;
+
             <input #RePassword formControlName="rePassword" type="password" name="floating_rePassword" id="floating_rePassword" class="block py-3 px-0 w-full text-[16px] text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-300  focus:outline-none focus:ring-0 focus:border-gray-300 peer" placeholder=" "  />
             <label for="floating_rePassword" class="peer-focus:font-[16px] absolute text-[16px] text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-gray-400 peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5">Re Password</label>
 
             <div class="absolute top-5 right-0  flex items-center ps-3 ">
-
               <button (click)="seeRePasword()">
-
                 @if (!rePasswordEye){
                   <i class="fa-regular fa-eye-slash"></i>
                 } @else {
                   <i class="fa-regular fa-eye"></i>
                 }
               </button>
-
             </div>
-          </div>
 
-          <div class="relative z-0 w-full mb-5 group ">
-            <input formControlName="phone" type="tel" name="floating_phone" id="floating_phone" class="block py-3 px-0 w-full text-[16px] text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-300  focus:outline-none focus:ring-0 focus:border-gray-300 peer" placeholder=" "  />
-            <label for="floating_phone" class="peer-focus:font-[16px] absolute text-[16px] text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-gray-400 peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5">Phone</label>
-
-            @if (LoginFrom.get('phone')?.errors && LoginFrom.get('phone')?.touched){
+            @if (touchedRePassword && (loginRePassword?.errors || LoginFrom.getError('misMatch') )) {
               <div class="flex p-4 mb-5 mt-3 text-sm text-white rounded-lg bg-red-400 " role="alert">
                 <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
@@ -162,9 +159,39 @@
                 <div>
                   <span class=" md:text-[16px]">Ensure that these requirements are met:</span>
                   <ul class="mt-1.5 list-disc list-inside">
-                    @if (LoginFrom.get('phone')?.getError('required')){
+                    @if (loginRePassword?.getError('required')){
                       <li>This Field is Required</li>
-                    } @else if (LoginFrom.get('phone')?.getError('pattern')){
+                    } @else if (loginRePassword?.getError('pattern')){
+                      <li>The Password must start with a upper case letter</li>
+
+                      <li>The Password be at least 5 character</li>
+                    } @else if (LoginFrom.getError('misMatch')){
+                      <li>The Password and RePassword doesn't match</li>
+                    }
+                  </ul>
+                </div>
+              </div>
+            }
+          </div>
+
+          <div class="relative z-0 w-full mb-5 group ">
+            @let loginPhone = LoginFrom.get('phone');
+
+            <input formControlName="phone" type="tel" name="floating_phone" id="floating_phone" class="block py-3 px-0 w-full text-[16px] text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-300  focus:outline-none focus:ring-0 focus:border-gray-300 peer" placeholder=" "  />
+            <label for="floating_phone" class="peer-focus:font-[16px] absolute text-[16px] text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-gray-400 peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5">Phone</label>
+
+            @if (loginPhone?.errors && LoginFrom.get('phone')?.touched){
+              <div class="flex p-4 mb-5 mt-3 text-sm text-white rounded-lg bg-red-400 " role="alert">
+                <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <span class="sr-only">Info</span>
+                <div>
+                  <span class=" md:text-[16px]">Ensure that these requirements are met:</span>
+                  <ul class="mt-1.5 list-disc list-inside">
+                    @if (loginPhone?.getError('required')){
+                      <li>This Field is Required</li>
+                    } @else if (loginPhone?.getError('pattern')){
                       <li>Please enter a valid phone number</li>
                     }
                   </ul>
@@ -172,7 +199,6 @@
               </div>
             }
           </div>
-
 
           <button type="submit" class="btn focus:ring-4 focus:outline-none">Submit</button>
         </form>
