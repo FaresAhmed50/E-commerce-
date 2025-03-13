@@ -23,4 +23,13 @@ export class URLService  {
   isAuthRoute() : boolean{
     return !(this.currentURL.includes('auth') || this.currentURL == '/');
   }
+
+  loginNavigation(path : string , data?:string):Promise<boolean>{
+
+    if(data){
+      return this._router.navigate([path , data]);
+    }else {
+      return this._router.navigate([path]);
+    }
+  }
 }
