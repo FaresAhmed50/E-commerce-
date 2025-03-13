@@ -1,26 +1,33 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, inject, ViewChild} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {JsonPipe} from '@angular/common';
+import {AuthServiceService} from '../../Services/auth/auth-service.service';
+import {Modal} from 'flowbite';
+
 
 @Component({
   selector: 'app-login',
   imports: [
     RouterLink,
     ReactiveFormsModule,
-    JsonPipe
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   standalone: true,
 })
-export class LoginComponent {
+export class LoginComponent implements AfterViewInit {
 
+  _authService = inject(AuthServiceService)
   passwordEye: boolean = false;
   rePasswordEye: boolean = false;
   @ViewChild("password") password!: ElementRef;
   @ViewChild('RePassword') RePassword!: ElementRef;
+  @ViewChild('modal') modalElement!: ElementRef;
+  modal!: Modal;
 
+  ngAfterViewInit() {
+    this.modal  = new Modal(this.modalElement.nativeElement);
+  }
 
   LoginFrom : FormGroup = new FormGroup({
     name : new FormControl( null , [Validators.required, Validators.minLength(6) , Validators.maxLength(30) ] ),
@@ -46,7 +53,16 @@ export class LoginComponent {
     if(this.LoginFrom.invalid){
       this.LoginFrom.markAsTouched();
     }else{
-      this.LoginFrom.reset();
+      this._authService.Signup(this.LoginFrom.value).subscribe({
+        next: result => {
+          console.log(result);
+        },
+        error: error => {
+          console.log(error);
+          this.modal.show();
+        },
+        complete: () => {}
+      })
     }
     console.log(this.LoginFrom);
 
