@@ -21,7 +21,6 @@ export class NavbarComponent implements OnInit , OnChanges {
 
 
   _flowbiteService : FlowbiteService = inject(FlowbiteService);
-  _pLATFORM_ID : any = inject(PLATFORM_ID)
   _breakpointObserver :BreakpointObserver = inject(BreakpointObserver);
   _uRLService:URLService = inject(URLService)
   screenSize!: boolean;
