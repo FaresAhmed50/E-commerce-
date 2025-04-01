@@ -92,6 +92,10 @@ export class LoginComponent implements OnInit ,  AfterViewInit , OnDestroy {
     this.rePasswordEye ? this.RePassword.nativeElement.type = 'text' : this.RePassword.nativeElement.type = 'password';
   }
 
+  closeModal(){
+    this.modal.hide();
+  }
+
   ngOnDestroy() {
    this.subscription.unsubscribe();
   }

@@ -5,6 +5,7 @@ import {AuthServiceService} from '../../Services/auth/auth-service.service';
 import {Subscription} from 'rxjs';
 import {URLService} from '../../Services/NavServices/urlservice.service';
 import {Modal} from 'flowbite';
+import {LoginComponent} from '../login/login.component';
 
 @Component({
   selector: 'app-register',
@@ -75,6 +76,10 @@ export class RegisterComponent implements OnInit ,  AfterViewInit , OnDestroy {
     this.passwordeye = !this.passwordeye;
     this.passwordeye ? this.PasswordInput.nativeElement.type = 'text' : this.PasswordInput.nativeElement.type = 'password';
     event.preventDefault();
+  }
+
+  closeModal(){
+    this.modal.hide();
   }
 
   ngOnDestroy() {
