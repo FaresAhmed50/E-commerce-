@@ -60,12 +60,14 @@ export class NavbarComponent implements OnInit , OnChanges {
     if(this.sideNav.nativeElement.classList.contains("-translate-x-full")){
       this.sideNav.nativeElement.classList.remove("-translate-x-full");
       this.sideNav.nativeElement.classList.add("transform-none");
-      console.log("hiiiii")
+      this.sideNav.nativeElement.setAttribute('aria-modal', 'true');
+      this.sideNav.nativeElement.setAttribute('role', 'dialog');
+
     }else{
       this.sideNav.nativeElement.classList.add("-translate-x-full");
       this.sideNav.nativeElement.classList.remove("transform-none");
-      console.log("byyyyyyyyyyyyy")
-
+      this.sideNav.nativeElement.setAttribute('aria-modal', 'false');
+      this.sideNav.nativeElement.setAttribute('aria-hidden', 'true');
     }
   }
 
