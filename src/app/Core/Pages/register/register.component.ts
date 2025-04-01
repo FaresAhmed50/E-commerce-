@@ -72,10 +72,8 @@ export class RegisterComponent implements OnInit ,  AfterViewInit , OnDestroy {
   }
 
   seePassword(event : MouseEvent | TouchEvent ){
-
     this.passwordeye = !this.passwordeye;
     this.passwordeye ? this.PasswordInput.nativeElement.type = 'text' : this.PasswordInput.nativeElement.type = 'password';
-
     event.preventDefault();
   }
 
