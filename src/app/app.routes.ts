@@ -16,6 +16,7 @@ export const routes: Routes = [
   {path:'contact-us' , loadComponent: () => import('./Feature/Pages/contact-us/contact-us.component').then(c => c.ContactUsComponent)},
   {path:'wishlist' , loadComponent: () => import('./Feature/Pages/wish-list/wish-list.component').then(c => c.WishListComponent)},
   {path:'cart' ,loadComponent: () => import('./Feature/Pages/cart/cart.component').then(c => c.CartComponent) },
+  {path:'userprofile', loadComponent: () => import('./Feature/Pages/user-profile/user-profile.component').then(c => c.UserProfileComponent)},
 
 
 
