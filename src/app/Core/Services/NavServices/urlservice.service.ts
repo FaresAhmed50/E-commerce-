@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import { Router , NavigationStart} from '@angular/router';
+import { Router , NavigationStart , NavigationEnd} from '@angular/router';
 import {filter} from 'rxjs';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class URLService  {
   }
 
   CurrentURL()  {
-    this._router.events.pipe(filter(event => event instanceof NavigationStart))
+    this._router.events.pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(event => {this.currentURL = event.url})
   }
 
