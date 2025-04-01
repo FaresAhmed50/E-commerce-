@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, PLATFORM_ID} from '@angular/core';
+import {Component, inject, OnChanges, OnInit, PLATFORM_ID} from '@angular/core';
 import {FlowbiteService} from '../../Services/Flowbit/flowbite.service';
 import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 import {ButtonComponent} from '../../UI/buttom/button.component';
@@ -17,7 +17,7 @@ import {isPlatformBrowser} from '@angular/common';
   standalone: true,
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit , OnChanges {
 
 
   _flowbiteService : FlowbiteService = inject(FlowbiteService);
@@ -33,6 +33,16 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this._flowbiteService.loadFlowbite( flowbite => {});
+    this.screenTraking();
+    this._uRLService.isAuthRoute();
+    console.log( "servicesss" , this._uRLService.isAuthRoute())
+  }
+
+  ngOnChanges() {
+    this.screenTraking();
+  }
+
+  screenTraking(){
     this._breakpointObserver.observe([
       "(max-width: 768px)"
     ]).subscribe((result: BreakpointState) => {
@@ -44,8 +54,6 @@ export class NavbarComponent implements OnInit {
         this.screenSize = result.matches;
       }
     });
-    this._uRLService.isAuthRoute()
-    console.log( "servicesss" , this._uRLService.isAuthRoute())
   }
 
   protected readonly isPlatformBrowser = isPlatformBrowser;
