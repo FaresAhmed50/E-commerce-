@@ -65,16 +65,18 @@ export class RegisterComponent implements OnInit ,  AfterViewInit , OnDestroy {
           this.apiCalling = false;
           this.errorMassage = error.error.message;
           this.modal.show();
-          // console.log(error.error.message);
         },
         complete: () => {}
       })
     }
   }
 
-  seePassword(){
+  seePassword(event : MouseEvent | TouchEvent ){
+
     this.passwordeye = !this.passwordeye;
     this.passwordeye ? this.PasswordInput.nativeElement.type = 'text' : this.PasswordInput.nativeElement.type = 'password';
+
+    event.preventDefault();
   }
 
   ngOnDestroy() {

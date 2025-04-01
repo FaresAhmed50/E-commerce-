@@ -79,13 +79,15 @@ export class LoginComponent implements OnInit ,  AfterViewInit , OnDestroy {
   }
 
   //Used to togel the type property between password and text
-  seePassword(){
+  seePassword(event : MouseEvent | TouchEvent){
+    event.preventDefault();
+
     this.passwordEye = !this.passwordEye;
     this.passwordEye ? this.password.nativeElement.type = 'text' :  this.password.nativeElement.type = 'password';
   }
 
   //Used to togel the type property between password and text
-  seeRePassword(){
+  seeRePassword(event : MouseEvent | TouchEvent){
     this.rePasswordEye = !this.rePasswordEye;
     this.rePasswordEye ? this.RePassword.nativeElement.type = 'text' : this.RePassword.nativeElement.type = 'password';
   }
