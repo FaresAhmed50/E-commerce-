@@ -11,7 +11,7 @@
           <h2 class="text-[16px] font-[Inter] font-bold  pb-2" [class]="indicator ? 'text-[--secondary-p]' : 'text-[black]' ">
             {{ card.title }}
           </h2>
-          <p class="text-[16px] font-[Inter] font-bold text-[black]">
+          <p class="text-[16px] font-[Inter] font-bold" [class]="indicator ? ' text-[black]' : 'text-[--secondary-p]' ">
             {{ card.paragraph }}
           </p>
         </div>
