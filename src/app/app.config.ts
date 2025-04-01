@@ -6,7 +6,8 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import {provideHttpClient, withFetch} from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }),
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes , withInMemoryScrolling({scrollPositionRestoration : 'enabled'}) , withViewTransitions()),
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch())

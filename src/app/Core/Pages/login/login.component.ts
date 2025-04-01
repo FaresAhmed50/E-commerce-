@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, inject, OnDestroy, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, inject, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AuthServiceService} from '../../Services/auth/auth-service.service';
@@ -17,11 +17,12 @@ import {Subscription} from 'rxjs';
   styleUrl: './login.component.scss',
   standalone: true,
 })
-export class LoginComponent implements AfterViewInit , OnDestroy {
+export class LoginComponent implements OnInit ,  AfterViewInit , OnDestroy {
 
   _authService = inject(AuthServiceService)
   _uRLService :URLService = inject(URLService)
   subscription : Subscription = new Subscription();
+  LoginFrom !: FormGroup;
   passwordEye: boolean = false;
   rePasswordEye: boolean = false;
   apiCalling: boolean = false;
@@ -30,17 +31,25 @@ export class LoginComponent implements AfterViewInit , OnDestroy {
   @ViewChild('modal') modalElement!: ElementRef;
   modal!: Modal;
 
+
+
+  ngOnInit() {
+    this.loginFormInit();
+  }
+
   ngAfterViewInit() {
     this.modal  = new Modal(this.modalElement.nativeElement);
   }
 
-  LoginFrom : FormGroup = new FormGroup({
-    name : new FormControl( null , [Validators.required, Validators.minLength(6) , Validators.maxLength(30) ] ),
-    email : new FormControl(null , [Validators.required, Validators.email]),
-    password: new FormControl(null , [Validators.required, Validators.pattern(/^[A-Z]\w{6,}$/) ]),
-    rePassword: new FormControl(null , [Validators.required, Validators.pattern(/^[A-Z]\w{6,}$/) ]),
-    phone : new FormControl(null , [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/)]),
-  } , this.rePasswordValidation );
+  loginFormInit() {
+    this.LoginFrom = new FormGroup({
+      name : new FormControl( null , [Validators.required, Validators.minLength(6) , Validators.maxLength(30) ] ),
+      email : new FormControl(null , [Validators.required, Validators.email]),
+      password: new FormControl(null , [Validators.required, Validators.pattern(/^[A-Z]\w{6,}$/) ]),
+      rePassword: new FormControl(null , [Validators.required, Validators.pattern(/^[A-Z]\w{6,}$/) ]),
+      phone : new FormControl(null , [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/)]),
+    } , this.rePasswordValidation );
+  }
 
 
   rePasswordValidation(form:AbstractControl){

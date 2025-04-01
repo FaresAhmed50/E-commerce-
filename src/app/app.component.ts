@@ -11,6 +11,7 @@ import {FooterComponent} from './Shared/Layout/footer/footer.component';
     FooterComponent
   ],
   templateUrl: './app.component.html',
+  standalone: true,
   styleUrl: './app.component.scss'
 })
 export class AppComponent  {

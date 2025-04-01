@@ -1,21 +1,15 @@
 
 <section>
-
   <div class="min-h-[100vh] flex flex-col md:flex-row ">
-
     <div class="w-full md:w-5/12 relative">
-
       <img src="Signup.png" class=" aspect-[75/86] md:aspect-[120/135] h-full md:h-[100vh] object-cover md:object-fill relative ">
-
 
       <p class="absolute top-8 left-[42%] md:left-[40%] lg:left-[45%] xl:left-[40%] font-light text-[24px] font-[Pacifico] text-black">
         Elegant.
       </p>
-
     </div>
 
     <div class=" ml-0 md:ml-[16.67%] w-full  md:w-5/12   flex flex-col justify-center items-center md:items-start mt-10 md:mt-0 ">
-
       <h1 class="text-[40px] font-[Inter] text-[--primary] font-bold mb-6">
         Sign In
       </h1>
@@ -42,7 +36,7 @@
             @let loginEmail = SignupForm.get('email');
             @let touchedEmail = SignupForm.get('email')?.touched;
 
-            <input formControlName="email" type="email" name="floating_email" id="floating_email" class="block py-3 px-0 w-full text-[16px] text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-300  focus:outline-none focus:ring-0 focus:border-gray-300 peer" placeholder=" "  />
+            <input formControlName="email" autocomplete="username" type="email" name="floating_email" id="floating_email" class="block py-3 px-0 w-full text-[16px] text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-300  focus:outline-none focus:ring-0 focus:border-gray-300 peer" placeholder=" "  />
             <label for="floating_email" class="peer-focus:font-[16px] absolute text-[16px] text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-gray-400 peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5">Email address</label>
 
             @if (loginEmail?.errors && touchedEmail ){
@@ -70,7 +64,7 @@
             @let loginPassword = SignupForm.get('password');
             @let touchedPassword = SignupForm.get('password')?.touched;
 
-            <input formControlName="password" #password type="password" name="floating_password" id="floating_password" class="block py-3 px-0 w-full text-[16px] text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-300  focus:outline-none focus:ring-0 focus:border-gray-300 peer" placeholder=" "  />
+            <input formControlName="password" #password autocomplete="current-password" type="password" name="floating_password" id="floating_password" class="block py-3 px-0 w-full text-[16px] text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-300  focus:outline-none focus:ring-0 focus:border-gray-300 peer" placeholder=" "  />
             <label for="floating_password" class="peer-focus:font-[16px] absolute text-[16px] text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-gray-400 peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5">Password</label>
 
 
@@ -134,9 +128,7 @@
         <svg class="mx-auto mb-4 text-red-400 w-12 h-12 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
         </svg>
-        @if (this.errorMassage == ){
           <h3 class="mb-5 text-[20px] font-[Inter] font-semibold text-[black] ">
-            <!--          Your Email doesn't  existed <br> You can SignUp Now-->
             {{this.errorMassage}}
           </h3>
           <button  type="button" class="text-white bg-black  focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
@@ -147,7 +139,6 @@
           <button data-modal-hide="popup-modal"  type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
             Try Again
           </button>
-        }
       </div>
     </div>
   </div>

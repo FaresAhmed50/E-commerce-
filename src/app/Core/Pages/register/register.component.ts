@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, inject, OnDestroy, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, inject, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AuthServiceService} from '../../Services/auth/auth-service.service';
@@ -13,9 +13,10 @@ import {Modal} from 'flowbite';
     ReactiveFormsModule
   ],
   templateUrl: './register.component.html',
+  standalone: true,
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent implements AfterViewInit , OnDestroy {
+export class RegisterComponent implements OnInit ,  AfterViewInit , OnDestroy {
 
 
   _AuthService : AuthServiceService = inject(AuthServiceService);
@@ -24,9 +25,15 @@ export class RegisterComponent implements AfterViewInit , OnDestroy {
   passwordeye : boolean = false;
   apiCalling : boolean = false;
   errorMassage !: string;
+  SignupForm !: FormGroup;
   @ViewChild('password') PasswordInput !: ElementRef;
   @ViewChild('modal') modalElement!: ElementRef;
   modal!: Modal;
+
+
+  ngOnInit() {
+    this.loginFormInint();
+  }
 
 
   ngAfterViewInit() {
@@ -34,10 +41,13 @@ export class RegisterComponent implements AfterViewInit , OnDestroy {
   }
 
 
-  SignupForm : FormGroup = new FormGroup({
-    email : new FormControl(null , [Validators.required, Validators.email]),
-    password : new FormControl(null , [Validators.required, Validators.pattern(/^[A-Z]\w{6,}$/) ]),
-  })
+
+  loginFormInint(){
+    this.SignupForm  = new FormGroup({
+      email : new FormControl(null , [Validators.required, Validators.email]),
+      password : new FormControl(null , [Validators.required, Validators.pattern(/^[A-Z]\w{6,}$/) ]),
+    })
+  }
 
   signupForm(){
     console.log(this.SignupForm);
@@ -48,8 +58,8 @@ export class RegisterComponent implements AfterViewInit , OnDestroy {
       this.subscription = this._AuthService.signin(this.SignupForm.value).subscribe({
         next: (result) => {
           this.apiCalling = false;
+          localStorage.setItem("userToken" , result.token);
           this._uRLService.registerNavigation('/home')
-          // console.log(result);
         },
         error: (error) => {
           this.apiCalling = false;

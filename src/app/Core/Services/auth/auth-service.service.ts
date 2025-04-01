@@ -14,16 +14,12 @@ export class AuthServiceService {
   env = Environments
 
 
-
-
-
   Signup(userDate: Userdata) : Observable<any> {
     return this._httpClient.post(this.env.BaseURL + `auth/signup` , userDate);
   }
 
   signin(loginUser : SignInDate) : Observable<any> {
     return this._httpClient.post(this.env.BaseURL + `auth/signin` , loginUser);
-
   }
 
 }

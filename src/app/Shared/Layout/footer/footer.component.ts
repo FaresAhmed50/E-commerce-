@@ -8,6 +8,7 @@ import {URLService} from '../../../Core/Services/NavServices/urlservice.service'
     RouterLink
   ],
   templateUrl: './footer.component.html',
+  standalone: true,
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent implements OnInit {
