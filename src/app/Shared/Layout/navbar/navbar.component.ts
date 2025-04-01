@@ -26,8 +26,6 @@ export class NavbarComponent implements OnInit , OnChanges {
   screenSize!: boolean;
   cart_count : number = 0;
   wishlist_count : number = 0;
-  @ViewChild('sideNav') sideNav!: ElementRef;
-
 
 
 
@@ -56,20 +54,4 @@ export class NavbarComponent implements OnInit , OnChanges {
     });
   }
 
-  toGellSidebar(){
-    if(this.sideNav.nativeElement.classList.contains("-translate-x-full")){
-      this.sideNav.nativeElement.classList.remove("-translate-x-full");
-      this.sideNav.nativeElement.classList.add("transform-none");
-      this.sideNav.nativeElement.setAttribute('aria-modal', 'true');
-      this.sideNav.nativeElement.setAttribute('role', 'dialog');
-
-    }else{
-      this.sideNav.nativeElement.classList.add("-translate-x-full");
-      this.sideNav.nativeElement.classList.remove("transform-none");
-      this.sideNav.nativeElement.setAttribute('aria-modal', 'false');
-      this.sideNav.nativeElement.setAttribute('aria-hidden', 'true');
-    }
-  }
-
-  protected readonly isPlatformBrowser = isPlatformBrowser;
 }
