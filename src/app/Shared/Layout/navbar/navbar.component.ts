@@ -1,4 +1,4 @@
-import {Component, inject, OnChanges, OnInit, PLATFORM_ID} from '@angular/core';
+import {Component, ElementRef, inject, OnChanges, OnInit, PLATFORM_ID, ViewChild} from '@angular/core';
 import {FlowbiteService} from '../../Services/Flowbit/flowbite.service';
 import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 import {ButtonComponent} from '../../UI/buttom/button.component';
@@ -26,6 +26,7 @@ export class NavbarComponent implements OnInit , OnChanges {
   screenSize!: boolean;
   cart_count : number = 0;
   wishlist_count : number = 0;
+  @ViewChild('sideNav') sideNav!: ElementRef;
 
 
 
@@ -53,6 +54,19 @@ export class NavbarComponent implements OnInit , OnChanges {
         this.screenSize = result.matches;
       }
     });
+  }
+
+  toGellSidebar(){
+    if(this.sideNav.nativeElement.classList.contains("-translate-x-full")){
+      this.sideNav.nativeElement.classList.remove("-translate-x-full");
+      this.sideNav.nativeElement.classList.add("transform-none");
+      console.log("hiiiii")
+    }else{
+      this.sideNav.nativeElement.classList.add("-translate-x-full");
+      this.sideNav.nativeElement.classList.remove("transform-none");
+      console.log("byyyyyyyyyyyyy")
+
+    }
   }
 
   protected readonly isPlatformBrowser = isPlatformBrowser;
