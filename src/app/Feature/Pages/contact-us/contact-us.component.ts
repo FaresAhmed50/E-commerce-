@@ -15,6 +15,7 @@ export class ContactUsComponent {
 
 
 
+  indecator1 = true
    card : Card[] = [
     {
       icon : "store.png",
@@ -34,4 +35,27 @@ export class ContactUsComponent {
       paragraph : "hello@3legant.com"
     },
   ];
+   card2 :Card[] = [
+     {
+       icon : "fast delivery.svg",
+       title : "Free Shipping",
+       paragraph : "Order above $200"
+     },
+     {
+       icon : "money.svg",
+       title : "Money-back",
+       paragraph : "30 days guarantee"
+     },
+     {
+       icon : "lock 01.svg",
+       title : "Secure Payments",
+       paragraph : "Secured by Stripe"
+     },
+     {
+       icon : "call.svg",
+       title : "24/7 Support",
+       paragraph : "Phone and Email support"
+     }
+   ]
+
 }

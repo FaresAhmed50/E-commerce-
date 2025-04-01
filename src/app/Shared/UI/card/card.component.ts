@@ -12,6 +12,7 @@ import { Card } from '../../Interface/card/card';
 })
 export class CardComponent implements OnChanges, OnInit {
   @Input() cards!: Card[];
+  @Input() indicator!: boolean;
   _breakpointObserver = inject(BreakpointObserver);
 
   cardWidth: string = '85%';
