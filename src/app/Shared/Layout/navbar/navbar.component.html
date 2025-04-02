@@ -68,9 +68,16 @@
             </a>
           </li>
 
-          <app-button [href]="'/auth/register'"  class="mt-5 mb-5">
-            Sign In
-          </app-button>
+          @if (!IsLoggedIn){
+            <app-button [href]="'/auth/register'"  class="mt-5 mb-5">
+              Sign In
+            </app-button>
+          } @else {
+            <app-button (click)="logOut()" class="mt-5 mb-5" >
+              Log Out
+            </app-button>
+          }
+
 
           <ul class=" flex  items-center ">
 
@@ -115,7 +122,7 @@
           </li>
 
 
-          @if (IsLoggedIn == false){
+          @if (!IsLoggedIn){
             <li class=" flex gap-2">
               <app-button [href]="'/auth/register'"  >
                 Sign In
