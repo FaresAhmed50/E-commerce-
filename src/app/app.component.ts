@@ -20,6 +20,11 @@ export class AppComponent  {
   _flowbiteService : FlowbiteService = inject(FlowbiteService);
   _authService : AuthServiceService = inject(AuthServiceService)
 
+  constructor() {
+    afterNextRender(()=>{
+      this._authService.longedINChecker();
+    })
+  }
 
   ngOnInit() {
     this._flowbiteService.loadFlowbite(flowbite => {});
