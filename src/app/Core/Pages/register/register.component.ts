@@ -5,7 +5,6 @@ import {AuthServiceService} from '../../Services/auth/auth-service.service';
 import {Subscription} from 'rxjs';
 import {URLService} from '../../Services/NavServices/urlservice.service';
 import {Modal} from 'flowbite';
-import {LoginComponent} from '../login/login.component';
 
 @Component({
   selector: 'app-register',
@@ -51,7 +50,6 @@ export class RegisterComponent implements OnInit ,  AfterViewInit , OnDestroy {
   }
 
   signupForm(){
-    console.log(this.SignupForm);
     if(this.SignupForm.invalid){
       this.SignupForm.markAllAsTouched();
     }else{
@@ -60,7 +58,8 @@ export class RegisterComponent implements OnInit ,  AfterViewInit , OnDestroy {
         next: (result) => {
           this.apiCalling = false;
           localStorage.setItem("userToken" , result.token);
-          this._uRLService.registerNavigation('/home')
+          this._AuthService.UserToken();
+          this._uRLService.registerNavigation('/home');
         },
         error: (error) => {
           this.apiCalling = false;

@@ -11,3 +11,12 @@ export interface SignInDate {
   email : string;
   password: string;
 }
+
+export interface userToken {
+  id: string
+  name: string
+  role: string
+  iat: number
+  exp: number
+}
+

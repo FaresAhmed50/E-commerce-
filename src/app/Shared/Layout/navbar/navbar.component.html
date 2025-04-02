@@ -24,21 +24,23 @@
           <span class="ms-2 font-bolder text-[24px] font-[Pacifico] text-black pb-8 ">Elegant.</span>
         }
 
-        <li class="me-5 pb-4 md:pb-0 text-[16px] font-[Inter] font-semibold text-[--secondary-p] border-b-2 w-[93%] mb-5 md:border-b-0 md:w-auto md:mb-0 ">
-          <a routerLink="/home"  routerLinkActive="router_active">Home</a>
-        </li>
+        @if (IsLoggedIn){
+          <li class="me-5 pb-4 md:pb-0 text-[16px] font-[Inter] font-semibold text-[--secondary-p] border-b-2 w-[93%] mb-5 md:border-b-0 md:w-auto md:mb-0 ">
+            <a routerLink="/home"  routerLinkActive="router_active">Home</a>
+          </li>
 
-        <li class="me-5 pb-4 md:pb-0 text-[16px] font-[Inter] font-semibold text-[--secondary-p] border-b-2 w-[93%] mb-5 md:border-b-0 md:w-auto md:mb-0">
-          <a routerLink="/shop" routerLinkActive="router_active" >Shop</a>
-        </li>
+          <li class="me-5 pb-4 md:pb-0 text-[16px] font-[Inter] font-semibold text-[--secondary-p] border-b-2 w-[93%] mb-5 md:border-b-0 md:w-auto md:mb-0">
+            <a routerLink="/shop" routerLinkActive="router_active" >Shop</a>
+          </li>
 
-        <li class="me-5 pb-4 md:pb-0 text-[16px] font-[Inter] font-semibold text-[--secondary-p] border-b-2 w-[93%] mb-5 md:border-b-0 md:w-auto md:mb-0">
-          <a routerLink="/products" routerLinkActive="router_active" >Product</a>
-        </li>
+          <li class="me-5 pb-4 md:pb-0 text-[16px] font-[Inter] font-semibold text-[--secondary-p] border-b-2 w-[93%] mb-5 md:border-b-0 md:w-auto md:mb-0">
+            <a routerLink="/products" routerLinkActive="router_active" >Product</a>
+          </li>
 
-        <li class="pb-4 md:pb-0 text-[16px] font-[Inter] font-semibold text-[--secondary-p] border-b-2 w-[93%] mb-5 md:border-b-0 md:w-auto md:mb-0">
-          <a routerLink="/contact-us" routerLinkActive="router_active" >Contact Us</a>
-        </li>
+          <li class="pb-4 md:pb-0 text-[16px] font-[Inter] font-semibold text-[--secondary-p] border-b-2 w-[93%] mb-5 md:border-b-0 md:w-auto md:mb-0">
+            <a routerLink="/contact-us" routerLinkActive="router_active" >Contact Us</a>
+          </li>
+        }
       </ul>
 
 
@@ -47,7 +49,7 @@
         <ul class=" flex flex-col justify-between w-[100%] ">
 
           <li class="me-5 border-b-[2px]">
-            <a  class="flex p-2 " routerLink="/cart">
+            <a  class="flex p-2 " routerLink="/cart"  [class]="IsLoggedIn ? '' : 'cursor-not-allowed' ">
               <span class="flex-1 ms-3 font-[Inter] text-[18px] font-bold text-[--secondary-p] mb-3 ">Cart</span>
               <span class="px-2 ms-3 text-sm font-medium flex justify-center items-center">
               <img src="shopping%20bag.svg" class="pr-2" alt="shopping icon">
@@ -57,7 +59,7 @@
           </li>
 
           <li class="me-5 border-b-[2px]">
-            <a  class="flex p-2 " routerLink="wishlist">
+            <a  class="flex p-2 " routerLink="wishlist" [class]="IsLoggedIn ? '' : 'cursor-not-allowed' ">
               <span class="flex-1 ms-3 font-[Inter] text-[18px] font-bold text-[--secondary-p] mb-3 ">Wishlist</span>
               <span class="px-2 ms-3 text-sm font-medium flex justify-center items-center">
               <img src="Shape.svg" class="pr-2" alt="cart icon">
@@ -66,7 +68,7 @@
             </a>
           </li>
 
-          <app-button>
+          <app-button [href]="'/auth/register'"  class="mt-5 mb-5">
             Sign In
           </app-button>
 
@@ -95,23 +97,37 @@
         <ul class=" flex justify-between items-center ">
 
           <li class="me-5">
-            <a>
+            <a [class]="IsLoggedIn ? '' : 'cursor-not-allowed' ">
               <img src="Vector.svg" alt="portflio">
             </a>
           </li>
 
           <li class="me-5">
-            <a routerLink="/wishlist">
+            <a routerLink="/wishlist" [class]="IsLoggedIn ? '' : 'cursor-not-allowed' ">
               <img src="Shape.svg" alt="cart icon">
             </a>
           </li>
 
           <li class="me-5">
-            <a routerLink="/cart">
+            <a routerLink="/cart" [class]="IsLoggedIn ? '' : 'cursor-not-allowed' ">
               <img src="shopping%20bag.svg" alt="shopping icon">
             </a>
           </li>
+
+
+          @if (IsLoggedIn == false){
+            <li class=" flex gap-2">
+              <app-button [href]="'/auth/register'"  >
+                Sign In
+              </app-button>
+
+              <app-button [href]="'/auth/login'"  >
+                Log In
+              </app-button>
+            </li>
+          }
         </ul>
+
       }
     </div>
   </aside>

@@ -1,8 +1,9 @@
-import {inject, Injectable} from '@angular/core';
+import {afterNextRender, inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {SignInDate, Userdata} from '../../Interfaces/User Date/userdata';
+import {SignInDate, Userdata, userToken} from '../../Interfaces/User Date/userdata';
 import {Environments} from '../../../Environments/environments';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {jwtDecode} from "jwt-decode"
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,18 @@ import {Observable} from 'rxjs';
 export class AuthServiceService {
 
 
+  private userToken !: string | null ;
+  userTokenDecoded : BehaviorSubject<userToken> = new BehaviorSubject({
+    "id": "",
+    "name": "",
+    "role": "",
+    "iat": 0,
+    "exp": 0
+  });
+
+
   _httpClient = inject(HttpClient);
-  env = Environments
+  env = Environments;
 
 
   Signup(userDate: Userdata) : Observable<any> {
@@ -20,6 +31,21 @@ export class AuthServiceService {
 
   signin(loginUser : SignInDate) : Observable<any> {
     return this._httpClient.post(this.env.BaseURL + `auth/signin` , loginUser);
+  }
+
+  UserToken(){
+    if(localStorage.getItem('userToken')){
+      this.userToken = localStorage.getItem('userToken');
+      this.userTokenDecoded.next(jwtDecode(this.userToken!))
+    }
+  }
+
+
+  longedINChecker(){
+    if(localStorage.getItem('userToken')){
+      this.userToken = localStorage.getItem('userToken');
+      this.userTokenDecoded.next(jwtDecode(this.userToken!))
+    }
   }
 
 }
