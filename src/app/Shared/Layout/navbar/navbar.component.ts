@@ -59,7 +59,6 @@ export class NavbarComponent implements OnInit , OnChanges {
   }
 
   isLoggedIn(){
-
     this._authService.userTokenDecoded.subscribe({
       next: (result) => {
         console.log(result.id , "IDDD")
@@ -75,6 +74,11 @@ export class NavbarComponent implements OnInit , OnChanges {
       complete: () => {}
       }
     )
+  }
+
+
+  logOut(){
+    this._authService.logout();
   }
 
 }

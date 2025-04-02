@@ -125,6 +125,12 @@
                 Log In
               </app-button>
             </li>
+          } @else {
+            <li class=" flex gap-2">
+              <app-button (click)="logOut()" >
+                Log Out
+              </app-button>
+            </li>
           }
         </ul>
 

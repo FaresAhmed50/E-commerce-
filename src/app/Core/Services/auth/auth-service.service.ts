@@ -4,6 +4,7 @@ import {SignInDate, Userdata, userToken} from '../../Interfaces/User Date/userda
 import {Environments} from '../../../Environments/environments';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {jwtDecode} from "jwt-decode"
+import {URLService} from '../NavServices/urlservice.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import {jwtDecode} from "jwt-decode"
 export class AuthServiceService {
 
 
+  _uRLService : URLService = inject(URLService);
   private userToken !: string | null ;
   userTokenDecoded : BehaviorSubject<userToken> = new BehaviorSubject({
     "id": "",
