@@ -33,6 +33,18 @@ export class AuthServiceService {
     return this._httpClient.post(this.env.BaseURL + `auth/signin` , loginUser);
   }
 
+  logout() {
+    localStorage.removeItem('userToken');
+    this.userTokenDecoded.next({
+      "id": "",
+      "name": "",
+      "role": "",
+      "iat": 0,
+      "exp": 0
+    });
+    this._uRLService.loginNavigation('/auth/register');
+  }
+
   UserToken(){
     if(localStorage.getItem('userToken')){
       this.userToken = localStorage.getItem('userToken');
