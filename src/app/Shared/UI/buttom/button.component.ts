@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-button',
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './button.component.html',
   standalone: true,
   styleUrl: './button.component.scss'
