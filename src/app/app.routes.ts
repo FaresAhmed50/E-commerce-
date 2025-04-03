@@ -6,7 +6,7 @@ import {loginUSerGuard} from './Core/Gaurds/user/login-user.guard';
 export const routes: Routes = [
 
   { path: 'auth', component: AuthLayoutComponent , children: [
-      {path: '' , loadComponent: () => import('./Core/Pages/register/register.component').then(c => c.RegisterComponent)},
+      {path: '' , canActivate:[loginUSerGuard] , loadComponent: () => import('./Core/Pages/register/register.component').then(c => c.RegisterComponent)},
       {path:'login' , canActivate:[loginUSerGuard] , loadComponent: () => import('./Core/Pages/login/login.component').then(c => c.LoginComponent)},
       {path:'register' , canActivate:[loginUSerGuard] , loadComponent:() => import('./Core/Pages/register/register.component').then(c => c.RegisterComponent)},
     ]

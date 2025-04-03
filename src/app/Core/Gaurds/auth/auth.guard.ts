@@ -11,7 +11,6 @@ export const authGuard: CanActivateFn = (route, state) => {
   if(isPlatformBrowser(_pLATFORM_ID)){
 
     if(localStorage.getItem('userToken')) {
-
       return true;
     }else {
       _uRLService.loginNavigation('/auth/login')

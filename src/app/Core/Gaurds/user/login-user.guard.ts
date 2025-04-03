@@ -11,9 +11,9 @@ export const loginUSerGuard: CanActivateFn = (route, state) => {
 
     if(localStorage.getItem('userToken')) {
       _uRLService.loginNavigation('/home')
-      return true;
-    }else {
       return false;
+    }else {
+      return true;
     }
   }else {
     return false;
