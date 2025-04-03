@@ -10,8 +10,8 @@ export class URLService  {
   _router = inject(Router);
   private currentURL = ``;
 
-
-  constructor() {
+  
+  ngOnInit() {
     this.CurrentURL();
   }
 
