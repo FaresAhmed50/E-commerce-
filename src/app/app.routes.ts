@@ -1,13 +1,14 @@
 import {Routes} from '@angular/router';
 import {AuthLayoutComponent} from './Core/Layout/auth-layout/auth-layout.component';
 import {authGuard} from './Core/Gaurds/auth/auth.guard';
+import {loginUSerGuard} from './Core/Gaurds/user/login-user.guard';
 
 export const routes: Routes = [
 
   { path: 'auth', component: AuthLayoutComponent , children: [
       {path: '' , loadComponent: () => import('./Core/Pages/register/register.component').then(c => c.RegisterComponent)},
-      {path:'login', loadComponent: () => import('./Core/Pages/login/login.component').then(c => c.LoginComponent)},
-      {path:'register', loadComponent:() => import('./Core/Pages/register/register.component').then(c => c.RegisterComponent)},
+      {path:'login' , canActivate:[loginUSerGuard] , loadComponent: () => import('./Core/Pages/login/login.component').then(c => c.LoginComponent)},
+      {path:'register' , canActivate:[loginUSerGuard] , loadComponent:() => import('./Core/Pages/register/register.component').then(c => c.RegisterComponent)},
     ]
   },
   {path:'' , loadComponent: () => import('./Core/Pages/login/login.component').then(c => c.LoginComponent)},
