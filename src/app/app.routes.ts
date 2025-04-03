@@ -1,5 +1,6 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 import {AuthLayoutComponent} from './Core/Layout/auth-layout/auth-layout.component';
+import {authGuard} from './Core/Gaurds/auth/auth.guard';
 
 export const routes: Routes = [
 
@@ -10,13 +11,13 @@ export const routes: Routes = [
     ]
   },
   {path:'' , loadComponent: () => import('./Core/Pages/login/login.component').then(c => c.LoginComponent)},
-  {path:'home' , loadComponent: () => import('./Feature/Pages/home/home.component').then(c => c.HomeComponent)},
-  {path:'shop' , loadComponent: () => import('./Feature/Pages/shop/shop.component').then(c => c.ShopComponent)},
-  {path:'products' , loadComponent: () => import('./Feature/Pages/products/products.component').then(c => c.ProductsComponent)},
-  {path:'contact-us' , loadComponent: () => import('./Feature/Pages/contact-us/contact-us.component').then(c => c.ContactUsComponent)},
-  {path:'wishlist' , loadComponent: () => import('./Feature/Pages/wish-list/wish-list.component').then(c => c.WishListComponent)},
-  {path:'cart' ,loadComponent: () => import('./Feature/Pages/cart/cart.component').then(c => c.CartComponent) },
-  {path:'userprofile', loadComponent: () => import('./Feature/Pages/user-profile/user-profile.component').then(c => c.UserProfileComponent)},
+  {path:'home' , canActivate:[authGuard]  , loadComponent: () => import('./Feature/Pages/home/home.component').then(c => c.HomeComponent)},
+  {path:'shop' , canActivate:[authGuard] ,  loadComponent: () => import('./Feature/Pages/shop/shop.component').then(c => c.ShopComponent)},
+  {path:'products' , canActivate:[authGuard] , loadComponent: () => import('./Feature/Pages/products/products.component').then(c => c.ProductsComponent)},
+  {path:'contact-us' , canActivate:[authGuard] , loadComponent: () => import('./Feature/Pages/contact-us/contact-us.component').then(c => c.ContactUsComponent)},
+  {path:'wishlist' , canActivate:[authGuard] , loadComponent: () => import('./Feature/Pages/wish-list/wish-list.component').then(c => c.WishListComponent)},
+  {path:'cart' , canActivate:[authGuard] ,loadComponent: () => import('./Feature/Pages/cart/cart.component').then(c => c.CartComponent) },
+  {path:'userprofile' , canActivate:[authGuard]  , loadComponent: () => import('./Feature/Pages/user-profile/user-profile.component').then(c => c.UserProfileComponent)},
 
 
 

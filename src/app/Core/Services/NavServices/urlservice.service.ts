@@ -1,17 +1,16 @@
-import {inject, Injectable, OnInit} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import { Router , NavigationStart} from '@angular/router';
 import {filter} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class URLService implements OnInit {
+export class URLService  {
 
   _router = inject(Router);
   private currentURL = ``;
 
-
-  ngOnInit() {
+  constructor() {
     this.CurrentURL();
   }
 
