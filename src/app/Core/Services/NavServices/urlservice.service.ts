@@ -1,23 +1,23 @@
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, OnInit} from '@angular/core';
 import { Router , NavigationStart} from '@angular/router';
 import {filter} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class URLService  {
+export class URLService implements OnInit {
 
   _router = inject(Router);
   private currentURL = ``;
 
-  
+
   ngOnInit() {
     this.CurrentURL();
   }
 
   CurrentURL()  {
     this._router.events.pipe(filter(event => event instanceof NavigationStart))
-      .subscribe(event => {this.currentURL = event.url})
+      .subscribe(event => {this.currentURL = event.url});
   }
 
   isAuthRoute() : boolean{
