@@ -12,8 +12,11 @@ export class ProductService {
   env = Environments
 
 
-  getAllProducts() : Observable<any> {
-   return this._httpClient.get(`${this.env}products`);
+  getAllProducts(pages : number = 1 ) : Observable<any> {
+
+    const params = new HttpParams().set('page', pages.toString());
+
+   return this._httpClient.get(`${this.env.BaseURL}products` , {params: params});
   }
 
   getSpecificProduct(productId: string) : Observable<any> {
