@@ -19,8 +19,8 @@ export class ProductService {
    return this._httpClient.get(`${this.env.BaseURL}products` , {params: params});
   }
 
-  getSpecificProduct(productId: string) : Observable<any> {
-    return this._httpClient.get(`${this.env.BaseURL}products/${productId}`);
+  getSpecificProduct(productId: string) : Observable<Product> {
+    return this._httpClient.get<Product>(`${this.env.BaseURL}products/${productId}`);
   }
 
   getFilterdProducts(spacificproduct : string) : Observable<Product[]> {
