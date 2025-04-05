@@ -12,7 +12,7 @@ export class ProductService {
   env = Environments
 
 
-  getAllProducts(pages : number = 1 ) : Observable<any> {
+  getAllProducts(pages : number = 1 ) : Observable<Api> {
 
     const params = new HttpParams().set('page', pages.toString());
 
