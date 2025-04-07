@@ -10,6 +10,26 @@ import {CardItemComponent} from '../../../Shared/UI/cardItem/card-item/card-item
   standalone: true,
   styleUrl: './shop.component.scss'
 })
-export class ShopComponent {
+export class ShopComponent implements OnInit {
+
+  _categoriesService :CategoriesService = inject(CategoriesService);
+
+
+  ngOnInit() {
+
+  }
+
+  getCategories(){
+    this._categoriesService.getAllCategories().subscribe({
+      next: result => {
+        console.log(result);
+      },
+      error: error => {
+        console.log(error);
+      },
+      complete: () => {}
+    })
+  }
+
 
 }
