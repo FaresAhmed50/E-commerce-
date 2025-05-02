@@ -11,7 +11,7 @@ export const routes: Routes = [
       {path:'register' , canActivate:[loginUSerGuard] , loadComponent:() => import('./Core/Pages/register/register.component').then(c => c.RegisterComponent)},
     ]
   },
-  {path:'' , loadComponent: () => import('./Core/Pages/login/login.component').then(c => c.LoginComponent)},
+  {path:'' , canActivate:[loginUSerGuard] , loadComponent: () => import('./Core/Pages/login/login.component').then(c => c.LoginComponent)},
   {path:'home' , canActivate:[authGuard]  , loadComponent: () => import('./Feature/Pages/home/home.component').then(c => c.HomeComponent)},
   {path:'shop' , canActivate:[authGuard] ,  loadComponent: () => import('./Feature/Pages/shop/shop.component').then(c => c.ShopComponent)},
   {path:'products' , canActivate:[authGuard] , loadComponent: () => import('./Feature/Pages/products/products.component').then(c => c.ProductsComponent)},

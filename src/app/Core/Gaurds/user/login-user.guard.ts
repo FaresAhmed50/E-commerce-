@@ -10,7 +10,7 @@ export const loginUSerGuard: CanActivateFn = (route, state) => {
   if(isPlatformBrowser(_pLATFORM_ID)){
 
     if(localStorage.getItem('userToken')) {
-      _uRLService.loginNavigation('/home')
+      _uRLService.loginNavigation('/home');
       return false;
     }else {
       return true;
