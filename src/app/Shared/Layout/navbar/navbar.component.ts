@@ -1,10 +1,9 @@
-import {Component, ElementRef, inject, OnChanges, OnInit, PLATFORM_ID, ViewChild} from '@angular/core';
+import {Component, inject, OnChanges, OnInit, PLATFORM_ID, ViewChild} from '@angular/core';
 import {FlowbiteService} from '../../Services/Flowbit/flowbite.service';
 import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 import {ButtonComponent} from '../../UI/buttom/button.component';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {URLService} from '../../../Core/Services/NavServices/urlservice.service';
-import {isPlatformBrowser} from '@angular/common';
 import {AuthServiceService} from '../../../Core/Services/auth/auth-service.service';
 
 @Component({
